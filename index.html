@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ha">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Manhajar Ibrahim — Saita Recovery Key</title>
+  <style>
+    :root{--bg:#1a1a1a;--card:#333;--gold:#d4af37;--text:#fff}
+    html,body{height:100%;margin:0}
+    body{font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--bg);color:var(--text);display:flex;align-items:center;justify-content:center;padding:24px}
+    .container{background:var(--card);padding:24px;border-radius:12px;width:100%;max-width:420px;box-shadow:0 10px 20px rgba(0,0,0,.5)}
+    h1{margin:0 0 8px;font-size:1.25rem}
+    p{margin:0 0 16px;color:#ddd}
+    input,textarea,button{width:100%;box-sizing:border-box}
+    input,textarea{padding:12px;margin:8px 0;border-radius:8px;border:1px solid rgba(255,255,255,.06);background:#222;color:var(--text)}
+    textarea{resize:vertical}
+    button{background:var(--gold);color:#000;border:none;padding:14px;border-radius:8px;font-weight:700;margin-top:8px;cursor:pointer}
+    .sr-only{position:absolute;border:0;padding:0;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  </style>
+</head>
+<body>
+  <div class="container" role="main">
+    <h1>Saita Recovery Key</h1>
+    <p>Shigar da kalmar sirri aƙalla haruffa 6 don kare bayananka.</p>
+
+    <form id="recoveryForm" novalidate>
+      <label for="pass" class="sr-only">Passphrase</label>
+      <input id="pass" name="pass" type="password" minlength="6" required placeholder="Shigar da Passphrase" aria-describedby="passHelp">
+
+      <label for="confirm" class="sr-only">Tabbatar da Passphrase</label>
+      <input id="confirm" name="confirm" type="password" minlength="6" required placeholder="Tabbatar da Passphrase">
+
+      <label for="hint" class="sr-only">Hint (zaɓi)</label>
+      <textarea id="hint" name="hint" rows="3" placeholder="Rubuta tunatarwa (Hint) - Na zaɓi ne"></textarea>
+
+      <button type="submit" id="saveBtn">Ajiye Makulli (Save Recovery Key)</button>
+    </form>
+  </div>
+
+  <script>
+    document.getElementById('recoveryForm').addEventListener('submit', function(e){
+      e.preventDefault();
+      const pass = document.getElementById('pass').value.trim();
+      const confirm = document.getElementById('confirm').value.trim();
+      if(pass.length < 6){
+        alert('Passphrase ya kamata ya kasance aƙalla haruffa 6.');
+        return;
+      }
+      if(pass !== confirm){
+        alert('Passphrases basu daidaita.');
+        return;
+      }
+      // Replace this with secure storage in a real app
+      alert('An adana wannan makullin!');
+      e.target.reset();
+    });
+  </script>
+</body>
+</html>
